@@ -16,8 +16,12 @@ class DisplayForm extends Component {
     showDescription: this.props.showDescription || true
   });
 }
-componentWillReceiveProps(nextProps) {
-  if (nextProps.data) this.setState({ data: nextProps.data });
+static getDerivedStateFromProps(nextProps, state) {
+  console.log(nextProps.data.getFormDetails());
+  nextProps.data.getFormDetails().then(data => {
+    console.log(data);
+  })
+  
 }
   render() {
     const data = this.state.data;

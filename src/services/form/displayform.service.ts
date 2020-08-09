@@ -1,8 +1,10 @@
 import { FormApi, } from './displayform.api';
 import { FormDetails } from "../../models/form/FormDetails";
 import { FormData } from "../../models/form/FromData";
-
+import { FormWizard1 } from '../../models/form/FormWizard1';
+import { FormWizard2 } from '../../models/form/FormWizard2';
 export class FormService implements FormApi {
+ 
   async getFormDetails(): Promise<FormDetails[]> {
 
     // return fetch('/users', {
@@ -26,5 +28,16 @@ export class FormService implements FormApi {
     console.log("Update the Form Values" + details);
     return [];
 
+  }
+  async doPostFormWizard1(details: FormWizard1): Promise<FormWizard1[]> {
+    console.log("Save the FormWizard1 Values" + details);
+
+    return [];
+   
+  }
+  async  doPostFormWizard2(details: FormWizard1): Promise<FormWizard2[]> {
+    console.log("Save the FormWizard1 Values" + details);
+
+    return [];
   }
 }

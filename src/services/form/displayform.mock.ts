@@ -1,14 +1,14 @@
-import {FormApi,} from './displayform.api';
+import {MockFormApi} from './displayform.mock.api';
 import { FormDetails } from "../../models/form/FormDetails";
 import {ObjectFactory} from 'typescript-ioc';
-import { FormData } from '../../models/form/FromData';
+
 
 export const productMockFactory: ObjectFactory = () => {
   console.log('ProductMock factory');
   return new FormMock();
 };
 
-export class FormMock implements FormApi  {
+export class FormMock implements MockFormApi  {
   async getFormDetails():Promise<FormDetails[]> {
     return [
         { label: "Name", txtvalue: "John Doe", type: "textinput" ,dwvalue:[]},
@@ -19,11 +19,6 @@ export class FormMock implements FormApi  {
         { label: "Country", dwvalue: ["United States"], type: "dropdown",txtvalue:""  }
     ];
   }
-  async doPostFormValues(formdata: FormData): Promise<FormData[]> {
-    throw new Error("Method not implemented.");
-  }
-  async doUpdateFormValues(formdata: FormData): Promise<FormData[]> {
-    throw new Error("Method not implemented.");
-  }
+ 
   
 }

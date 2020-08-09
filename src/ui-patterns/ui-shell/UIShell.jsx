@@ -31,15 +31,15 @@ class UIShell extends Component {
     "Update Form",
     "Validating Form Wizard 1",
     "Validating Form Wizard 2",
-    "ProductView",
-    "Simple List",
+   
+    /*"Simple List",
     "Table List",
     "List to List",
     "Linked List",
     "Master Detail",
     "Create, Read, Update, Delete",
     "Search List",
-    "Search Form"
+    "Search Form"*/
   ];
 
   constructor(props) {

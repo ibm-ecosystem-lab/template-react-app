@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import {Container} from 'typescript-ioc';
 import DisplayForm from '../../ui-patterns/form/DisplayForm';
-import {FormApi} from '../../services';
+import {MockFormApi} from '../../services';
 class FormViewComponent extends Component<any ,any> {
-  formApi: FormApi;
+  formApi: MockFormApi;
   constructor(props: any) {
     super(props);
     this.formApi =  this.formService();
   }
- formService(): FormApi {
-    return Container.get(FormApi);
+ formService(): MockFormApi {
+    return Container.get(MockFormApi);
   }  
 
   render() {

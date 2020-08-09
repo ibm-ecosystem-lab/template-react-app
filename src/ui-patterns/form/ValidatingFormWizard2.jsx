@@ -6,6 +6,8 @@ import {
   Button,
   Tile
 } from "carbon-components-react";
+import {Container} from 'typescript-ioc';
+import {FormApi} from '../../services';
 import Header from "../ui-shell/Header";
 import "../ui-shell/patterns.scss";
 
@@ -116,9 +118,12 @@ class ValidatingFormWizard2 extends Component {
         country: this.state.country
       };
       this.setState({ dataToSave });
+      this.formService(dataToSave);
     }
   };
-
+  formService(details) {
+    return Container.get(FormApi).doPostFormWizard1(details);
+  }  
   render() {
     return (
       <div className="bx--grid pattern-container">
