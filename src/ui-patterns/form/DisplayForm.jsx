@@ -9,20 +9,20 @@ class DisplayForm extends Component {
     this.state = {
       data: [],
     };
- }
- async componentDidMount() {
-  this.setState({
-    data: await this.props.data.getFormDetails(),
-    showDescription: this.props.showDescription || true
-  });
-}
-static getDerivedStateFromProps(nextProps, state) {
-  console.log(nextProps.data.getFormDetails());
-  nextProps.data.getFormDetails().then(data => {
-    console.log(data);
-  })
-  
-}
+  }
+  async componentDidMount() {
+    this.setState({
+      data: await this.props.data.getFormDetails(),
+      showDescription: this.props.showDescription || true
+    });
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.data) {
+      nextProps.data.getFormDetails().then(data => {
+        this.setState({ data: nextProps.data });
+      });
+    }
+  }
   render() {
     const data = this.state.data;
     const showDescription = this.state.showDescription;
