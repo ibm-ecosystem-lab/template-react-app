@@ -1,0 +1,10 @@
+import {Container} from 'typescript-ioc';
+import {FormApi} from './form/displayform.api';
+import {FormMock} from './form/displayform.mock';
+import {FormService} from './form/displayform.service';
+export * from './form/displayform.api';
+export * from './form/displayform.mock';
+export * from './form/displayform.service';
+console.log('Configuring container');
+Container.bind(FormApi).to(FormMock);
+Container.bind(FormApi).to(FormService);
