@@ -4,7 +4,7 @@ import ValidateForm from "../../components/form/ValidateForm";
 import UpdatingForm from "../../components/form/UpdateForm";
 import ValidateFormWizard1 from "../../components/form/ValidateFormWizard1";
 import ValidateFormWizard2 from "../../components/form/ValidateFormWizard2";
-
+import SearchFormView from "../../components/form/SearchForm";
 
 class UIShellBody extends Component {
   components = {
@@ -12,7 +12,8 @@ class UIShellBody extends Component {
     "Validating Form": ValidateForm,
     "Update Form": UpdatingForm,
     "Validating Form Wizard 1": ValidateFormWizard1,
-    "Validating Form Wizard 2": ValidateFormWizard2 
+    "Validating Form Wizard 2": ValidateFormWizard2 ,
+    "Search Form":SearchFormView
   };
   defaultComponent = "Display Form";
 

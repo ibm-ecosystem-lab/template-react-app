@@ -31,7 +31,7 @@ class UIShell extends Component {
     "Update Form",
     "Validating Form Wizard 1",
     "Validating Form Wizard 2",
-   
+    "Search Form"
     /*"Simple List",
     "Table List",
     "List to List",

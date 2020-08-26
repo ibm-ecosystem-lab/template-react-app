@@ -8,5 +8,6 @@ export abstract class FormApi {
   abstract  async  doUpdateFormValues(details:FormData):Promise<FormData[]> ;
   abstract  async  doPostFormWizard1(details:FormWizard1):Promise<FormWizard1[]> ;
   abstract  async  doPostFormWizard2(details:FormWizard1):Promise<FormWizard2[]> ;
+  abstract  async  doSearch(details:FormData):Promise<FormData[]> ;
 }
 

@@ -1,4 +1,4 @@
-import { FormApi, } from './displayform.api';
+import { FormApi, } from './forms.api';
 import { FormDetails } from "../../models/form/FormDetails";
 import { FormData } from "../../models/form/FromData";
 import { FormWizard1 } from '../../models/form/FormWizard1';
@@ -37,6 +37,11 @@ export class FormService implements FormApi {
   }
   async  doPostFormWizard2(details: FormWizard1): Promise<FormWizard2[]> {
     console.log("Save the FormWizard1 Values" + details);
+
+    return [];
+  }
+  async  doSearch(details: FormData): Promise<FormData[]> {
+    console.log("Search the form details" + details);
 
     return [];
   }

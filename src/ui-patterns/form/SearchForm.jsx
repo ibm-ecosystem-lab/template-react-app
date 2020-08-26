@@ -1,44 +1,30 @@
 import React, { Component } from "react";
 import { Search } from "carbon-components-react";
-import "./patterns.scss";
-import Header from "./Header";
+import Header from "../ui-shell/Header";
+import "../ui-shell/patterns.scss";
 import DisplayForm from "./DisplayForm";
 
 class SearchForm extends Component {
+
   constructor(props) {
     super(props);
-    const defaultData = [
-      {
-        Name: "Lin",
-        Address: "123 Main Street",
-        City: "Austin",
-        State: "TX",
-        ZipCode: "12345",
-        Country: "USA"
-      },
-      {
-        Name: "Mak",
-        Address: "45 2nd Street",
-        City: "Austin",
-        State: "TX",
-        ZipCode: "78766",
-        Country: "USA"
-      },
-      {
-        Name: "Joe",
-        Address: "40 Down Street",
-        City: "San Francisco",
-        State: "CA",
-        ZipCode: "90706",
-        Country: "USA"
-      }
-    ];
     this.state = {
-      searchKeyword: "",
-      data: defaultData
+      data: [],
     };
   }
-
+  async componentDidMount() {
+    this.setState({
+      data: await this.props.data.getFormDetails(),
+      showDescription: this.props.showDescription || true
+    });
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.data) {
+      nextProps.data.getFormDetails().then(data => {
+        this.setState({ data: nextProps.data });
+      });
+    }
+  }
   formatDataForDisplayForm = datarow => {
     const displayData = Object.keys(datarow).map(label => {
       return { label, value: datarow[label], type: "textinput" };
