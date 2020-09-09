@@ -9,7 +9,7 @@ import {
   Icon
 } from "carbon-components-react";
 import { iconCheckmarkSolid } from "carbon-icons";
-import DisplayForm from "../form/DisplayForm";
+import CompositeForm from "./CompositeForm";
 import Header from "../ui-shell/Header";
 import "../ui-shell/patterns.scss";
 class MasterDetail extends Component {
@@ -109,7 +109,7 @@ class MasterDetail extends Component {
             </StructuredListWrapper>
           </div>
         </div>
-       
+        <CompositeForm data={data[selectedRow]} />
         
       </div>
     );

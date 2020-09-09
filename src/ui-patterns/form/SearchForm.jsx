@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Search } from "carbon-components-react";
 import Header from "../ui-shell/Header";
 import "../ui-shell/patterns.scss";
-import DisplayForm from "./DisplayForm";
+import CompositeForm from "../composite/CompositeForm";
 
 class SearchForm extends Component {
 
@@ -78,7 +78,7 @@ class SearchForm extends Component {
           <div className="bx--row">
             <div className="bx--col-xs-12">
               {filteredData.length > 0 ? (
-                <DisplayForm
+                <CompositeForm
                   data={this.formatDataForDisplayForm(filteredData[0])}
                 />
               ) : (
