@@ -43,7 +43,7 @@ class SearchForm extends Component {
           accumulator ||
           datarow[field]
             .toLocaleLowerCase()
-            .includes(this.state.searchKeyword.toLocaleLowerCase())
+            .includes(this.state.searchKeyword)
         );
       }, false)
     );

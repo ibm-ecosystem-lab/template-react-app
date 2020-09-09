@@ -6,15 +6,15 @@ import {
   StructuredListHead,
   StructuredListBody,
   StructuredListInput,
-  Icon
+  Icon,
+  Button
 } from "carbon-components-react";
 import { iconCheckmarkSolid } from "carbon-icons";
-import Header from "./Header";
-import DisplayForm from "./DisplayForm";
+import ValidatingForm from "../form/ValidatingForm";
 import Header from "../ui-shell/Header";
 import "../ui-shell/patterns.scss";
 
-class MasterDetail extends Component {
+class CreateReadUpdateDelete extends Component {
   constructor(props) {
     super(props);
     const data = [
@@ -45,12 +45,54 @@ class MasterDetail extends Component {
     ];
     this.state = {
       selectedRow: 0,
-      data
+      data,
+      adding: false
     };
   }
 
   onRowClick = id => {
     this.setState({ selectedRow: id });
+  };
+
+  addRow = () => {
+    let data = this.state.data.slice();
+    let selectedRow = this.state.data.length;
+    data[selectedRow] = [
+      { label: "Name", value: "Enter data below", type: "textinput" },
+      { label: "Address", value: "", type: "textinput" },
+      { label: "City", value: "", type: "textinput" },
+      { label: "State", value: [""], type: "dropdown" },
+      { label: "ZipCode", value: "", type: "textinput" },
+      { label: "Country", value: [""], type: "dropdown" }
+    ];
+    this.setState({ data, selectedRow, adding: true });
+  };
+
+  deleteRow = () => {
+    let data = this.state.data.slice();
+    if (data.length > 0) {
+      data.splice(this.state.selectedRow, 1);
+      this.setState({ data, selectedRow: 0 });
+    }
+  };
+
+  updateRow = newData => {
+    let data = this.state.data.slice();
+    let selectedRow = this.state.selectedRow;
+    data[selectedRow] = [
+      { label: "Name", value: newData.name, type: "textinput" },
+      { label: "Address", value: newData.address, type: "textinput" },
+      { label: "City", value: newData.city, type: "textinput" },
+      { label: "State", value: [newData.state], type: "dropdown" },
+      { label: "ZipCode", value: newData.zipCode, type: "textinput" },
+      { label: "Country", value: [newData.country], type: "dropdown" }
+    ];
+    this.setState({ data });
+  };
+
+  toggleAdding = () => {
+    const adding = this.state.adding;
+    this.setState({ adding: !adding });
   };
 
   renderRow = (row, id) => {
@@ -85,13 +127,15 @@ class MasterDetail extends Component {
   render() {
     const selectedRow = this.state.selectedRow;
     const data = this.state.data;
-    const columns = data[selectedRow].map(item => item.label);
+    const columns = data.length
+      ? data[selectedRow].map(item => item.label)
+      : [];
 
     return (
-      <div className="bx--grid ">
+      <div className="bx--grid pattern-container">
         <Header
-          title="Master Detail"
-          subtitle="This pattern will use a simple list of table list and link to a display form."
+          title="Create, Read, Update, Delete"
+          subtitle="This composite pattern is build from the Table List pattern and uses the Validating Form pattern for creating items, Update Form pattern for Update."
         />
         <div className="bx--row">
           <div className="bx--col-xs-12">
@@ -118,10 +162,33 @@ class MasterDetail extends Component {
             </StructuredListWrapper>
           </div>
         </div>
-        <DisplayForm data={data[selectedRow]} />
+        <div className="bx--row left-align">
+          <div className="bx--col-xs-12">
+            <Button className="add-delete-row-buttons" onClick={this.addRow}>
+              Add Row
+            </Button>
+            <Button className="add-delete-row-buttons" onClick={this.deleteRow}>
+              Delete Row
+            </Button>
+          </div>
+        </div>
+        <br />
+        <br />
+        {data.length > 0 && (
+          <div className="bx--row">
+            <div className="bx--col-xs-12">
+              <ValidatingForm
+                data={data[selectedRow]}
+                updateRow={this.updateRow}
+                adding={this.state.adding}
+                toggleAdding={this.toggleAdding}
+              />
+            </div>
+          </div>
+        )}
       </div>
     );
   }
 }
 
-export default MasterDetail;
+export default CreateReadUpdateDelete;

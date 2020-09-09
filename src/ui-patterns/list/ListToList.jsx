@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { DataTable, Button } from "carbon-components-react";
-import Header from "./Header";
-import "./patterns.scss";
+import Header from "../ui-shell/Header";
+import "../ui-shell/patterns.scss";
 
 const {
   Table,

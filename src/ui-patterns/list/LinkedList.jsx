@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Form, DropdownV2, Button, Tile } from "carbon-components-react";
-import Header from "./Header";
-import "./patterns.scss";
+import { Form, Dropdown, Button, Tile } from "carbon-components-react";
+import Header from "../ui-shell/Header";
+import "../ui-shell/patterns.scss";
 
 let checkFlag = true;
 
@@ -28,7 +28,7 @@ class LinkedList extends Component {
       cityList: []
     };
   }
-
+  
   saveData = event => {
     const target = event.target;
     let fieldName = target.name;
@@ -99,6 +99,7 @@ class LinkedList extends Component {
   };
 
   render() {
+   
     return (
       <div className="bx--grid pattern-container">
         <Header
@@ -110,7 +111,7 @@ class LinkedList extends Component {
             <Tile>
               <Form>
                 <p className="bx--label left-align">Country</p>
-                <DropdownV2
+                <Dropdown
                   id="country"
                   label="Select a country.."
                   ariaLabel="Select a country.."
@@ -124,7 +125,7 @@ class LinkedList extends Component {
                 <br />
                 <br />
                 <p className="bx--label left-align">State</p>
-                <DropdownV2
+                <Dropdown
                   id="state"
                   label="Select a state.."
                   ariaLabel="Select a state.."
@@ -138,7 +139,7 @@ class LinkedList extends Component {
                 <br />
                 <br />
                 <p className="bx--label left-align">City</p>
-                <DropdownV2
+                <Dropdown
                   id="city"
                   label="Select a city.."
                   ariaLabel="Select a city.."

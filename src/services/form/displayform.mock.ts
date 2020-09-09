@@ -3,7 +3,7 @@ import { FormDetails } from "../../models/form/FormDetails";
 import {ObjectFactory} from 'typescript-ioc';
 
 
-export const productMockFactory: ObjectFactory = () => {
+export const displayFormMockFactory: ObjectFactory = () => {
   console.log('ProductMock factory');
   return new FormMock();
 };

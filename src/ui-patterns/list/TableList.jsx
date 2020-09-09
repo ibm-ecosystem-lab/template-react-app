@@ -9,8 +9,8 @@ import {
   Icon
 } from "carbon-components-react";
 import { iconCheckmarkSolid } from "carbon-icons";
-import Header from "./Header";
-import "./patterns.scss";
+import Header from "../ui-shell/Header";
+import "../ui-shell/patterns.scss";
 
 class TableList extends Component {
   title = 'Table List';
@@ -23,33 +23,6 @@ class TableList extends Component {
     }
   };
 
-  data = [
-    {
-      Name: "Lin",
-      Address: "123 Main Street",
-      City: "Austin",
-      State: "TX",
-      ZipCode: "12345",
-      Country: "United States"
-    },
-    {
-      Name: "Mak",
-      Address: "45 2nd Street",
-      City: "Austin",
-      State: "TX",
-      ZipCode: "78766",
-      Country: "United States"
-    },
-    {
-      Name: "Joe",
-      Address: "40 Down Street",
-      City: "San Francisco",
-      State: "CA",
-      ZipCode: "90706",
-      Country: "United States"
-    }
-  ];
-
   constructor(props) {
     super(props);
     this.state = {
@@ -59,10 +32,9 @@ class TableList extends Component {
   }
 
   async componentDidMount() {
-
     this.setState({
-      data: this.data,
-    })
+      data: await this.props.data.getTableData()
+    });
   }
 
   onRowClick = id => {
@@ -103,6 +75,7 @@ class TableList extends Component {
 
   render() {
     const data = this.state.data;
+    console.log(data);
 
     return (
       <div className="bx--grid pattern-container">
